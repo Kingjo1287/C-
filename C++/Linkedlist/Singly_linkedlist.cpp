@@ -10,7 +10,7 @@ struct Node
 };
 
 // Global head reference variable
-Node *head = NULL;
+Node *head;
 // Will insert node at the beginning where the head is located
 void insertFirst(int value)
 {
@@ -96,6 +96,22 @@ void deletion(int position)
         delete temp_1;
     }
 }
+void Reverse()
+{
+    Node *current_node, *previous_node, *next_node;
+    current_node = head;
+    previous_node = NULL;
+    while (current_node != NULL)
+    {
+        next_node = current_node->next;
+        current_node->next = previous_node;
+        previous_node = current_node;
+        current_node = next_node;
+
+        current_node = next_node;
+    }
+    head = previous_node;
+}
 
 // Will display values through traversing
 void display()
@@ -111,6 +127,7 @@ void display()
 
 int main()
 {
+    head = NULL;
 
     insertFirst(3);
     insertFirst(2);
@@ -118,6 +135,9 @@ int main()
     insertLast(4);
     insertLast(5);
     insertAtPosition(100, 5);
+    deletion(5);
+    display();
+    Reverse();
     display();
 
     return 0;
