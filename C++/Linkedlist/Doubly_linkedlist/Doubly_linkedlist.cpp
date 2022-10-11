@@ -1,13 +1,18 @@
+// Zohaib Ahmad
+// 11/10/2022
 #include <iostream>
 using namespace std;
 
-struct Node{
+struct Node
+{
     int value;
     Node *next;
     Node *perv;
 };
 Node *head;
-Node *Get_New_Node(int value){
+
+Node *Get_New_Node(int value)
+{ // Function to make a new Node.
     Node *new_node;
     new_node = new Node();
     new_node->value = value;
@@ -16,72 +21,80 @@ Node *Get_New_Node(int value){
     return new_node;
 }
 
-void InsertAtHead(int value){
+void InsertAtHead(int value)
+{ // Will insert a new Node at head
     Node *new_Node = Get_New_Node(value);
-    if(head == NULL){
+    if (head == NULL)
+    {
         head = new_Node;
     }
-    else{
+    else
+    {
         new_Node->next = head;
         head->perv = new_Node;
-        head = new_Node; 
+        head = new_Node;
     }
 }
 
-void InserAtEnd(int value){
+void InserAtEnd(int value)
+{ // Will insert a new Node at the end of the linkedlist
     Node *new_node = Get_New_Node(value);
-    if(head == NULL){
+    if (head == NULL)
+    {
         head = new_node;
     }
-    else{
+    else
+    {
         Node *temp = head;
-        while(temp->next!= NULL){
+        while (temp->next != NULL)
+        {
             temp = temp->next;
         }
         temp->next = new_node;
         new_node->perv = temp;
     }
-
 }
 
-void print(){
+void print()
+{ // Function to print values of linkedlist
     Node *temp = head;
-    if(temp == NULL){
+    if (temp == NULL)
+    {
         return;
     }
-    cout<<"NULL<-->";
-    while(temp != NULL){
-        cout<<temp->value<<"<-->";
+    cout << "NULL<-->";
+    while (temp != NULL)
+    {
+        cout << temp->value << "<-->";
         temp = temp->next;
     }
-    cout<<"NULL";
-    cout<<endl;
+    cout << "NULL";
+    cout << endl;
 }
 
-void print_Reverse(){
+void print_Reverse()
+{ // Will print the linkedlist in reverse order
     Node *temp = head;
-    if(temp == NULL){
+    if (temp == NULL)
+    {
         return;
     }
-
-    while(temp->next != NULL){
+    while (temp->next != NULL)
+    {
         temp = temp->next;
     }
-    cout<<"NULL<-->";
-    while(temp != NULL){
-        cout<<temp->value<<"<-->";
+    cout << "NULL<-->";
+    while (temp != NULL)
+    {
+        cout << temp->value << "<-->";
         temp = temp->perv;
     }
-    cout<<"NULL";
-    cout<<endl;
-
-
+    cout << "NULL";
+    cout << endl;
 }
 
-
-
-
-int main(){
+int main()
+{
 
     head = NULL;
 
@@ -96,5 +109,4 @@ int main(){
     print_Reverse();
 
     return 0;
-
 }
