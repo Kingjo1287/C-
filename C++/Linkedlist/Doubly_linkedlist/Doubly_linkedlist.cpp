@@ -10,7 +10,7 @@ struct Node
     Node *perv;
 };
 Node *head;
-
+//---------------------------------------------------------------------------------------------------
 Node *Get_New_Node(int value)
 { // Function to make a new Node.
     Node *new_node;
@@ -53,6 +53,10 @@ void InserAtEnd(int value)
         temp->next = new_node;
         new_node->perv = temp;
     }
+}
+
+void deletion(){
+    
 }
 
 void print()
