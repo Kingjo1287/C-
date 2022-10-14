@@ -83,7 +83,38 @@ public:
         }
     }
 
-    void deletion(int position)
+    void deletion_by_value(int value)
+    {
+        Node *current = head;
+        if (head->value == value)
+        {
+            current = head;
+            head = head->next;
+            delete current;
+        }
+        else
+        {
+
+            Node *prev = head;
+            while (prev->next != NULL)
+            {
+                if (prev->next->value == value)
+                {
+                    current = prev->next;
+                    prev->next = current->next;
+                    delete current;
+                    return;
+                }
+                else
+                {
+                    prev = prev->next;
+                }
+            }
+            cout << "Data not found" << endl;
+        }
+    }
+
+    void deletion_by_Position(int position)
     {
         Node *temp = head;
         if (position == 1)
@@ -126,5 +157,6 @@ int main()
     list.insertFirst(-2);
     list.insertLast(1);
     list.insertLast(2);
+    list.deletion_by_value(4);
     list.display();
 }

@@ -1,3 +1,5 @@
+// Name: Zohaib Ahmad
+// Date: 09/10/2022
 #include <iostream>
 using namespace std;
 
@@ -103,7 +105,7 @@ void deletion_by_value(int value)
             }
         
         }
-        cout<<"Ni mili........value"<<endl;
+        cout<<"Data not found"<<endl;
 
     }
 }
