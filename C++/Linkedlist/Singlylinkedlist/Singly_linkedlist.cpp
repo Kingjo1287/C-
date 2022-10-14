@@ -5,7 +5,6 @@ using namespace std;
 struct Node
 {
     int value;
-    int size = 0;
     Node *next;
 };
 
@@ -76,7 +75,40 @@ void insertAtPosition(int value, int position) // Will insert Node at given posi
     }
 }
 
-void deletion(int position)
+void deletion_by_value(int value)
+{
+    Node *current = head;
+    if (head->value == value)
+    {
+        current = head;
+        head = head->next;
+        delete current;
+    }
+    else
+    {
+
+        Node *prev = head;
+        while (prev->next != NULL)
+        {
+            if (prev->next->value == value)
+            {
+                current = prev->next;
+                prev->next = current->next;
+                delete current;
+                return;
+            }
+            else
+            {
+                prev = prev->next;
+            }
+        
+        }
+        cout<<"Ni mili........value"<<endl;
+
+    }
+}
+
+void deletion_by_Position(int position)
 {
     Node *temp = head;
     if (position == 1)
@@ -133,11 +165,9 @@ int main()
     insertFirst(2);
     insertFirst(1);
     insertLast(4);
-    insertLast(5);
-    insertAtPosition(100, 5);
-    deletion(5);
-    display();
-    Reverse();
+    insertLast(6);
+    // insertAtPosition(100, 5);
+    deletion_by_value(5);
     display();
 
     return 0;
