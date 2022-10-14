@@ -55,7 +55,39 @@ void InserAtEnd(int value)
     }
 }
 
-void deletion(){
+void deletion_by_value(int value){
+    Node *temp = head;
+    if(head->value == value){
+        temp = head;
+        head = head->next;
+    }
+    else{
+        Node *temp2;
+        while(temp->next != NULL){
+            if(temp->next->value == value){
+                temp2 = temp->next;
+                if(temp2->next != NULL){
+                    temp->next = temp2->next;
+                    temp2->next->perv = temp->perv;
+                    return;
+                }
+                else{
+                    temp->next = NULL;
+                    delete temp2;
+
+                }
+                //temp->next = temp2->next;
+                //temp2->next->perv = temp->perv;
+                delete temp2;
+                return;
+            }
+            temp = temp->next;
+            
+        }
+        cout<<"Data not found";
+
+    }
+
     
 }
 
@@ -108,9 +140,9 @@ int main()
     InserAtEnd(4);
     InserAtEnd(5);
     InserAtEnd(6);
-
+    deletion_by_value(6);
     print();
-    print_Reverse();
+   // print_Reverse();
 
     return 0;
 }
