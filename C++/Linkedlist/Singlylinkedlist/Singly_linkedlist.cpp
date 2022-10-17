@@ -168,6 +168,8 @@ int main()
     insertFirst(1);
     insertLast(4);
     insertLast(5);
+    display();
+    Reverse();
     // insertAtPosition(100, 5);
     deletion_by_value(5);
     display();
