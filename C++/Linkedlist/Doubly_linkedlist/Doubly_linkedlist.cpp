@@ -54,6 +54,34 @@ void InserAtEnd(int value)
         new_node->perv = temp;
     }
 }
+void deletion(int value){
+    Node *temp = head;
+    if(head==NULL){
+        cout<<"List is empty"<<endl;
+    }
+    if(head->value == value){
+        temp->next->perv = NULL;
+        head = temp->next;
+        return;
+        }
+    while(temp->next != NULL){
+        if(temp->next->value == value){
+            Node *Next;
+            Next = temp->next;
+            if(Next->next == NULL){
+                temp->next = NULL;
+                delete Next;
+                return;
+            }
+            Next->next->perv = temp;
+            temp->next = Next->next;
+            delete Next;
+        }
+        temp = temp->next;
+    }
+    cout<<"Value not found"<<endl;
+}
+
 
 void print()
 { // Function to print values of linkedlist
@@ -106,6 +134,7 @@ int main()
     InserAtEnd(4);
     InserAtEnd(5);
     InserAtEnd(6);
+    deletion(7);
     print();
     // print_Reverse();
 
