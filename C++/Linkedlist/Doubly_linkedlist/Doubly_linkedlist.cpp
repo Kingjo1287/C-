@@ -20,7 +20,7 @@ Node *Get_New_Node(int value)
     new_node->perv = NULL;
     return new_node;
 }
-
+//-----------------------------------------------------------------------------------------------------
 void InsertAtHead(int value)
 { // Will insert a new Node at head
     Node *new_Node = Get_New_Node(value);
@@ -35,7 +35,7 @@ void InsertAtHead(int value)
         head = new_Node;
     }
 }
-
+//--------------------------------------------------------------------------------------------------------
 void InserAtEnd(int value)
 { // Will insert a new Node at the end of the linkedlist
     Node *new_node = Get_New_Node(value);
@@ -54,21 +54,28 @@ void InserAtEnd(int value)
         new_node->perv = temp;
     }
 }
-void deletion(int value){
+//--------------------------------------------------------------------------------------------------------------
+void deletion(int value)
+{
     Node *temp = head;
-    if(head==NULL){
-        cout<<"List is empty"<<endl;
+    if (head == NULL)
+    {
+        cout << "List is empty" << endl;
     }
-    if(head->value == value){
+    if (head->value == value)
+    {
         temp->next->perv = NULL;
         head = temp->next;
         return;
-        }
-    while(temp->next != NULL){
-        if(temp->next->value == value){
+    }
+    while (temp->next != NULL)
+    {
+        if (temp->next->value == value)
+        {
             Node *Next;
             Next = temp->next;
-            if(Next->next == NULL){
+            if (Next->next == NULL)
+            {
                 temp->next = NULL;
                 delete Next;
                 return;
@@ -79,9 +86,9 @@ void deletion(int value){
         }
         temp = temp->next;
     }
-    cout<<"Value not found"<<endl;
+    cout << "Value not found" << endl;
 }
-
+//-----------------------------------------------------------------------------------------------------------------
 void print()
 { // Function to print values of linkedlist
     Node *temp = head;
@@ -98,7 +105,7 @@ void print()
     cout << "NULL";
     cout << endl;
 }
-
+//--------------------------------------------------------------------------------------------------------------
 void print_Reverse()
 { // Will print the linkedlist in reverse order
     Node *temp = head;
@@ -119,10 +126,9 @@ void print_Reverse()
     cout << "NULL";
     cout << endl;
 }
-
+//------------------------------------------------------------------------------------------------------------
 int main()
 {
-
     head = NULL;
 
     InsertAtHead(3);
@@ -131,10 +137,9 @@ int main()
     InserAtEnd(4);
     InserAtEnd(5);
     InserAtEnd(6);
-
     deletion(7);
     print();
-    // print_Reverse();
+    print_Reverse();
 
     return 0;
 }

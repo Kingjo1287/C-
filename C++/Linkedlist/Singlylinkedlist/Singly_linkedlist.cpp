@@ -12,6 +12,7 @@ struct Node
 
 // Global head reference variable
 Node *head;
+//----------------------------------------------------------------------------------------------------------------
 // Will insert node at the beginning where the head is located
 void insertFirst(int value)
 {
@@ -30,7 +31,7 @@ void insertFirst(int value)
         head = new_node;
     }
 }
-
+//----------------------------------------------------------------------------------------------------------------
 // Will insert new node at the end where tail is located
 void insertLast(int value)
 {
@@ -54,7 +55,7 @@ void insertLast(int value)
         temp->next = new_node;
     }
 }
-
+//----------------------------------------------------------------------------------------------------------------
 void insertAtPosition(int value, int position) // Will insert Node at given position
 {
     Node *new_node;
@@ -76,7 +77,7 @@ void insertAtPosition(int value, int position) // Will insert Node at given posi
         temp->next = new_node;
     }
 }
-
+//----------------------------------------------------------------------------------------------------------------
 void deletion_by_value(int value)
 {
     Node *temp = head;
@@ -88,7 +89,6 @@ void deletion_by_value(int value)
     }
     else
     {
-
         Node *temp2 = head;
         while (temp2->next != NULL)
         {
@@ -106,10 +106,9 @@ void deletion_by_value(int value)
         
         }
         cout<<"Data not found"<<endl;
-
     }
 }
-
+//----------------------------------------------------------------------------------------------------------------
 void deletion_by_Position(int position)
 {
     Node *temp = head;
@@ -130,6 +129,7 @@ void deletion_by_Position(int position)
         delete temp_1;
     }
 }
+//----------------------------------------------------------------------------------------------------------------
 void Reverse()
 {
     Node *current_node, *previous_node, *next_node;
@@ -146,7 +146,7 @@ void Reverse()
     }
     head = previous_node;
 }
-
+//----------------------------------------------------------------------------------------------------------------
 // Will display values through traversing
 void display()
 {
@@ -158,7 +158,7 @@ void display()
     }
     cout << "NULL" << endl;
 }
-
+//---------------------------------------------------------------------------------------------------------------
 int main()
 {
     head = NULL;
@@ -170,7 +170,7 @@ int main()
     insertLast(5);
     display();
     Reverse();
-    // insertAtPosition(100, 5);
+    insertAtPosition(100, 5);
     deletion_by_value(5);
     display();
 
