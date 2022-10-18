@@ -1,3 +1,5 @@
+// Name: Zohaib Ahmad
+// Date: 09/10/2022
 #include <iostream>
 using namespace std;
 
@@ -77,33 +79,33 @@ void insertAtPosition(int value, int position) // Will insert Node at given posi
 
 void deletion_by_value(int value)
 {
-    Node *current = head;
+    Node *temp = head;
     if (head->value == value)
     {
-        current = head;
+        temp = head;
         head = head->next;
-        delete current;
+        delete temp;
     }
     else
     {
 
-        Node *prev = head;
-        while (prev->next != NULL)
+        Node *temp2 = head;
+        while (temp2->next != NULL)
         {
-            if (prev->next->value == value)
+            if (temp2->next->value == value)
             {
-                current = prev->next;
-                prev->next = current->next;
-                delete current;
+                temp = temp2->next;
+                temp2->next = temp->next;
+                delete temp;
                 return;
             }
             else
             {
-                prev = prev->next;
+                temp2 = temp2->next;
             }
         
         }
-        cout<<"Ni mili........value"<<endl;
+        cout<<"Data not found"<<endl;
 
     }
 }
@@ -165,7 +167,9 @@ int main()
     insertFirst(2);
     insertFirst(1);
     insertLast(4);
-    insertLast(6);
+    insertLast(5);
+    display();
+    Reverse();
     // insertAtPosition(100, 5);
     deletion_by_value(5);
     display();

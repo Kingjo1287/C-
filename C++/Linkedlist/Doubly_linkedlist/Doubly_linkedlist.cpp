@@ -55,10 +55,6 @@ void InserAtEnd(int value)
     }
 }
 
-void deletion(){
-    
-}
-
 void print()
 { // Function to print values of linkedlist
     Node *temp = head;
@@ -75,6 +71,8 @@ void print()
     cout << "NULL";
     cout << endl;
 }
+
+
 
 void print_Reverse()
 { // Will print the linkedlist in reverse order
@@ -108,9 +106,8 @@ int main()
     InserAtEnd(4);
     InserAtEnd(5);
     InserAtEnd(6);
-
     print();
-    print_Reverse();
+    // print_Reverse();
 
     return 0;
 }
