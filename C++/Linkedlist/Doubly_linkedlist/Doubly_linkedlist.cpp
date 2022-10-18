@@ -82,7 +82,6 @@ void deletion(int value){
     cout<<"Value not found"<<endl;
 }
 
-
 void print()
 { // Function to print values of linkedlist
     Node *temp = head;
@@ -99,8 +98,6 @@ void print()
     cout << "NULL";
     cout << endl;
 }
-
-
 
 void print_Reverse()
 { // Will print the linkedlist in reverse order
@@ -134,6 +131,7 @@ int main()
     InserAtEnd(4);
     InserAtEnd(5);
     InserAtEnd(6);
+
     deletion(7);
     print();
     // print_Reverse();
