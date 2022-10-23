@@ -55,7 +55,7 @@ void InserAtEnd(int value)
     }
 }
 //--------------------------------------------------------------------------------------------------------------
-void deletion(int value)
+void deletion_by_value(int value)
 {
     Node *temp = head;
     if (head == NULL)
@@ -83,10 +83,37 @@ void deletion(int value)
             Next->next->perv = temp;
             temp->next = Next->next;
             delete Next;
+            return;
         }
         temp = temp->next;
     }
     cout << "Value not found" << endl;
+}
+//----------------------------------------------------------------------------------------------------------------
+void deletion_by_position(int position){
+    Node *temp = head;
+    if(head == NULL){
+        cout <<"List is empty" << endl;
+        return;
+    }
+    if(position == 1){
+        temp->next->perv = NULL;
+        head = temp->next;
+        return;
+    }
+    for(int i = 0; i<position -2; i++){
+        temp =  temp->next;
+    }
+    Node *Next;
+    Next = temp->next;
+    if(Next->next == NULL){
+        temp->next = NULL;
+        delete Next;
+        return ;
+    }
+    Next->next->perv = temp;
+    temp->next = Next->next;
+    delete Next;
 }
 //-----------------------------------------------------------------------------------------------------------------
 void print()
@@ -137,7 +164,10 @@ int main()
     InserAtEnd(4);
     InserAtEnd(5);
     InserAtEnd(6);
-    deletion(7);
+    print();
+    deletion_by_position(3);
+    print();
+    deletion_by_value(4);
     print();
     print_Reverse();
 
