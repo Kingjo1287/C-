@@ -1,4 +1,5 @@
 // Zohaib Ahmad
+//SP21-BCS-048
 // 11/10/2022
 #include <iostream>
 using namespace std;
@@ -90,30 +91,36 @@ void deletion_by_value(int value)
     cout << "Value not found" << endl;
 }
 //----------------------------------------------------------------------------------------------------------------
-void deletion_by_position(int position){
+void deletion_by_position(int position)
+{
     Node *temp = head;
-    if(head == NULL){
-        cout <<"List is empty" << endl;
+    if (head == NULL)
+    {
+        cout << "List is empty" << endl;
         return;
     }
-    if(position == 1){
+    if (position == 1)
+    {
         temp->next->perv = NULL;
         head = temp->next;
         return;
     }
-    for(int i = 0; i<position -2; i++){
-        temp =  temp->next;
+    for (int i = 0; i < position - 2; i++)
+    {
+        temp = temp->next;
     }
     Node *Next;
     Next = temp->next;
-    if(Next->next == NULL){
+    if (Next->next == NULL)
+    {
         temp->next = NULL;
         delete Next;
-        return ;
+        return;
     }
     Next->next->perv = temp;
     temp->next = Next->next;
     delete Next;
+    return;
 }
 //-----------------------------------------------------------------------------------------------------------------
 void print()
@@ -157,19 +164,39 @@ void print_Reverse()
 int main()
 {
     head = NULL;
-
-    InsertAtHead(3);
-    InsertAtHead(2);
-    InsertAtHead(1);
-    InserAtEnd(4);
-    InserAtEnd(5);
-    InserAtEnd(6);
-    print();
-    deletion_by_position(3);
-    print();
-    deletion_by_value(4);
-    print();
-    print_Reverse();
+    int num;
+    cout << "Enter the number of nodes You want to create" << endl;
+    cin >> num;
+    int value;
+    cout << "Please enter the values of the nodes" << endl;
+    for (int i = 0; i < num; i++)
+    {
+        cin >> value;
+        InserAtEnd(value);
+        print();
+    }
+    int c;
+    cout << "For deletion by value press 1. for deletion by position press 2." << endl;
+    cin >> c;
+    switch (c)
+    {
+    case 1:
+        int value1;
+        cout << "Please enter the value you want to delete";
+        cin >> value1;
+        deletion_by_value(value1);
+        print();
+        break;
+    case 2:
+        int position;
+        cout << "Pleasae enter the position of the node";
+        cin >> position;
+        deletion_by_position(position);
+        print();
+    default:
+        cout << "Pleasae enter the correct value";
+        break;
+    }
 
     return 0;
 }
