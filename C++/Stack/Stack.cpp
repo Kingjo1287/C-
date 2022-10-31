@@ -7,7 +7,7 @@ struct Node{
     Node *next;
 };
 
-Node *head;
+Node *Top;
 
 Node *create_node(int value){
     Node *new_node;
@@ -19,50 +19,91 @@ Node *create_node(int value){
 void push(int value){
     Node *new_node = create_node(value);
 
-    if(head == NULL){
-        head = new_node;
+    if(Top == NULL){
+        Top = new_node;
     }
     else{
-        new_node->next = head;
-        head = new_node;
+        new_node->next = Top;
+        Top = new_node;
     }
 
+}
+
+void peek(){
+    if(Top == NULL){
+        cout<<"Stack is empty"<<endl;
+        return;                           
+    }
+    cout<<"Top value of stack is "<<Top->value<<endl;;
 }
 
 void pop(){
-    Node *temp = head;
-    if(head == NULL){
+    Node *temp = Top;
+    if(Top == NULL){
         cout<<"There is no data in stack"<<endl;
         return;
     }
-    head = temp->next;
+    Top = temp->next;
     delete temp;
 }
 
+void IsEmpty(){
+    if(Top == NULL){
+        cout<<"True"<<endl;
+        return;
+    }
+    cout<<"False"<<endl;
+    
+}
+
 void print(){
-    Node *temp = head;
+    Node *temp = Top;
     while(temp != NULL){
         cout<<temp->value<<endl;
-        cout<<"|"<<endl;
+        cout<<"="<<endl;
         temp = temp->next;
     }
     cout<<"======"<<endl;
 }
 
 int main(){
-    head = NULL;
+    Top = NULL;
+     int option, w,value;
+    do{
+        cout<<"==========MAIN==========="<<endl;
+        cout<<"To push Press 1."<<endl;
+        cout<<"To Pop Press 2."<<endl;
+        cout<<"To print Press 3."<<endl;
+        cout<<"To peek Press 4."<<endl;
+        cout<<"To check is empty Press 5."<<endl;
+        cout<<"Press 6 to exit"<<endl;
+        cin>>option;
+        cout<<"-----------"<<endl;
 
-    push(2);
-    push(3);
-    push(5);
-    print();
-    pop();
-    push(6);
-    print();
-    push(2);
-    pop();
-    push(7);
-    print();
+        switch (option)
+        {
+        case 1:
+            cout<<"enter value to push"<<endl;
+            cin>>value;
+            push(value);
+            break;
+        case 2:
+            pop();
+            break;
+        case 3:
+            print();
+            break;
+        case 4:
+            peek();
+            break;
+        case 5:
+            IsEmpty();
+            break;
+        default:
+            break;
+        }
+    }while(option != 6);
+   
     
     return 0;
 
