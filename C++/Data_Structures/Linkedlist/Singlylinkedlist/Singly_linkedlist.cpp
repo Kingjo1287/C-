@@ -146,6 +146,32 @@ void Reverse()
     }
     head = previous_node;
 }
+//----------------------------------------------------------------------------------------------------
+Node bubble_sort(Node *head){
+    Node *temp = head;
+    Node *temp2 = head;
+    Node* p1 , *p2;
+    
+    while(temp2->next != NULL){
+        while(temp->next != NULL){
+            if(temp->value>temp->next->value){
+               p1 = temp->next;
+               p2 = p1->next;
+
+               p1->next = temp;
+               temp->next = p2;   
+            }
+        temp = temp->next;
+        }
+    temp2= temp2->next;
+    }
+    return *head;
+    
+}
+
+
+
+
 //----------------------------------------------------------------------------------------------------------------
 // Will display values through traversing
 void display()
@@ -163,16 +189,64 @@ int main()
 {
     head = NULL;
 
-    insertFirst(3);
-    insertFirst(2);
-    insertFirst(1);
-    insertLast(4);
-    insertLast(5);
-    display();
-    Reverse();
-    insertAtPosition(100, 5);
-    deletion_by_value(5);
-    display();
+    int option, position,value;
+
+    do{
+        cout<<"==========MAIN==========="<<endl;
+        cout<<"To insert data at head Press 1."<<endl;
+        cout<<"To insert data at tail Press 2."<<endl;
+        cout<<"To insert data at a spacific position Press 3."<<endl;
+        cout<<"To delete any data Press 4."<<endl;
+        cout<<"To delete data at any position Press 5."<<endl;
+        cout<<"To reverse the linkedlist Press 6."<<endl;
+        cout<<"To Print linkedlilst Press 7."<<endl;
+        cout<<"To sort linkedlist Press 8."<<endl;
+        cout<<"Press 9 to exit"<<endl;
+        cin>>option;
+        cout<<"-----------"<<endl;
+
+        switch (option)
+        {
+        case 1:
+            cout<<"Enter the data"<<endl;
+            cin>>value;
+            insertFirst(value);
+            break;
+        case 2:
+            cout<<"Enter the data"<<endl;
+            cin>>value;
+            insertLast(value);
+            break;
+        case 3:
+            cout<<"Enter the data"<<endl;
+            cin>>value;
+            cout<<"Enter the position"<<endl;
+            cin>>position;
+            insertAtPosition(value,position); 
+            break;
+        case 4: 
+            cout<<"Enter the data that you want to delete"<<endl;
+            cin>>value;
+            deletion_by_value(value);
+            break;
+        case 5:
+            cout<<"Enter the position at which you want to delete data"<<endl;
+            cin>>position;
+            deletion_by_Position(position);
+            break;
+        case 6:
+            Reverse();
+            break;
+        case 7:
+            display();
+            break;
+        case 8:
+            bubble_sort(head);
+            break;
+        default:
+            break;
+        }
+    }while(option != 9);
 
     return 0;
 }
