@@ -147,26 +147,31 @@ void Reverse()
     head = previous_node;
 }
 //----------------------------------------------------------------------------------------------------
-Node bubble_sort(Node *head){
+
+//not implemented......
+void bubble_sort(){
     Node *temp = head;
     Node *temp2 = head;
     Node* p1 , *p2;
     
-    while(temp2->next != NULL){
+    while(temp2!= NULL){
         while(temp->next != NULL){
             if(temp->value>temp->next->value){
                p1 = temp->next;
                p2 = p1->next;
 
                p1->next = temp;
-               temp->next = p2;   
+               temp->next = p2;
+              
+                 
             }
         temp = temp->next;
         }
+        head = temp;
+        
     temp2= temp2->next;
     }
-    return *head;
-    
+    return;
 }
 
 
@@ -241,7 +246,7 @@ int main()
             display();
             break;
         case 8:
-            bubble_sort(head);
+            bubble_sort();
             break;
         default:
             break;

@@ -2,14 +2,20 @@
 using namespace std;
 
 void inc_sort(int arr[], int size){
-
+    bool isswap;
     for(int i = 1; i< size; i++){
+        isswap = false;
         for(int j = 0; j< (size-i); j++){
             if(arr[j]> arr[j+1]){
                 int temp = arr[j];
                 arr[j] = arr[j+1];
                 arr[j+1] = temp;
+                isswap = true;
             }
+        }
+        if(isswap == false){
+            cout<<"Values are already sorted"<<endl;
+            break;
         }
     }
 
@@ -18,15 +24,20 @@ void inc_sort(int arr[], int size){
     }
 }
 
-void dec_sort(int arr[], int size){
-
+void decr_sort(int arr[], int size){
+    bool isswap = false;
     for(int i = 0; i< size-1; i++){
         for(int j = 0; j< (size-i); j++){
             if(arr[j]< arr[j+1]){
                 int temp = arr[j];
                 arr[j] = arr[j+1];
                 arr[j+1] = temp;
+                isswap = true;
             }
+        }
+        if(isswap == false){
+            cout<<"Values are already sorted"<<endl;
+            break;
         }
     }
     for(int i = 0; i<size; i++){
@@ -61,7 +72,7 @@ int main(){
             inc_sort(arr, size); 
             break;
         case 2:
-            dec_sort(arr, size);
+            decr_sort(arr, size);
             break;
        
         default:
