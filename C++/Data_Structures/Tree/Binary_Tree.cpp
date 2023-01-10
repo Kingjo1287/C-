@@ -43,6 +43,44 @@ bool replace(Node* root,int data,int replce){
         return replace(root->right,data,replce);
     }
 }
+
+Node* FindMin(Node* root)
+{
+	while(root->left != NULL) root = root->left;
+	return root;
+}
+
+struct Node* Delete(struct Node *root, int data) {
+	if(root == NULL) return root; 
+	else if(data < root->data) root->left = Delete(root->left,data);
+	else if (data > root->data) root->right = Delete(root->right,data);	
+	else {
+		// Case 1:  No child
+		if(root->left == NULL && root->right == NULL) { 
+			delete root;
+			root = NULL;
+		}
+		//Case 2: One child 
+		else if(root->left == NULL) {
+			struct Node *temp = root;
+			root = root->right;
+			delete temp;
+		}
+		else if(root->right == NULL) {
+			struct Node *temp = root;
+			root = root->left;
+			delete temp;
+		}
+		// case 3: 2 children
+		else { 
+			struct Node *temp = FindMin(root->right);
+			root->data = temp->data;
+			root->right = Delete(root->right,temp->data);
+		}
+	}
+	return root;
+}
+ 
  
 void inorder(Node *root){
     if(root==NULL) return;
@@ -75,6 +113,8 @@ root=insert(root,23);
 root=insert(root,2);
 inorder(root);
 replace(root,57,9);
+inorder(root);
+Delete(root,4);
 inorder(root);
 return 0;
 
